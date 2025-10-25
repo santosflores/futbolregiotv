@@ -4,6 +4,7 @@
 
 - `types/person.ts` - TypeScript interface definitions for Person data model
 - `lib/db.ts` - Database connection and query functions
+- `lib/schema.sql` - SQL schema for `people` table and indexes
 - `lib/utils/sorting.ts` - Helper functions for sorting people by various criteria
 - `app/api/people/route.ts` - API endpoint for fetching all people
 - `app/api/people/[id]/route.ts` - API endpoint for fetching single person by ID
@@ -31,12 +32,12 @@
 
 - [ ] 1.0 Database Setup and Configuration
 
-  - [ ] 1.1 Install PostgreSQL client library (`pg`) and type definitions (`@types/pg`)
-  - [ ] 1.2 Create `.env.local` file with `DATABASE_URL` environment variable
-  - [ ] 1.3 Create database schema SQL file (`lib/schema.sql`) with CREATE TABLE statement for `people` table
-  - [ ] 1.4 Add database indexes for `entry_number`, `name`, `created_at`, and expression index on `LOWER(name)`
-  - [ ] 1.5 Create database connection pool utility in `lib/db.ts` using `pg.Pool`
-  - [ ] 1.6 Add database seed script to insert initial sample data (Santos Flores, Juan Perez, John Doe)
+  - [x] 1.1 Install PostgreSQL client library (`pg`) and type definitions (`@types/pg`)
+  - [x] 1.2 Create `.env.local` file with `DATABASE_URL` environment variable
+  - [x] 1.3 Create database schema SQL file (`lib/schema.sql`) with CREATE TABLE statement for `people` table
+  - [x] 1.4 Add database indexes for `entry_number`, `name`, `created_at`, and expression index on `LOWER(name)`
+  - [x] 1.5 Create database connection pool utility in `lib/db.ts` using `pg.Pool`
+  - [x] 1.6 Add database seed script to insert initial sample data (Santos Flores, Juan Perez, John Doe)
   - [ ] 1.7 Test database connection and verify schema creation works correctly
 
 - [ ] 2.0 Type Definitions and Data Models
