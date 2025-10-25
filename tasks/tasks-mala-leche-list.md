@@ -78,15 +78,15 @@
   - [x] 5.6 Add proper ARIA labels and semantic HTML (ul/li elements)
   - [x] 5.7 Test component renders correctly with sample data
 
-- [ ] 6.0 Search Functionality
+- [x] 6.0 Search Functionality
 
-  - [ ] 6.1 Create `app/components/SearchBar.tsx` as client component
-  - [ ] 6.2 Implement controlled input with state management for search query
-  - [ ] 6.3 Add debounce functionality to prevent excessive filtering (300ms delay)
-  - [ ] 6.4 Pass search query to parent component via onChange callback
-  - [ ] 6.5 Add placeholder text: "Search by name..."
-  - [ ] 6.6 Style search input with minimal, clean design using Tailwind
-  - [ ] 6.7 Add clear button (X icon) to reset search query
+  - [x] 6.1 Create `app/components/SearchBar.tsx` as client component
+  - [x] 6.2 Implement controlled input with state management for search query
+  - [x] 6.3 Add debounce functionality to prevent excessive filtering (300ms delay)
+  - [x] 6.4 Pass search query to parent component via onChange callback
+  - [x] 6.5 Add placeholder text: "Search by name..."
+  - [x] 6.6 Style search input with minimal, clean design using Tailwind
+  - [x] 6.7 Add clear button (X icon) to reset search query
 
 - [ ] 7.0 Sort Controls
 

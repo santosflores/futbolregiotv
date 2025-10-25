@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import PersonList from "./components/PersonList";
+import SearchBar from "./components/SearchBar";
 import type { Person } from "@/types";
 
 // Sample data for testing
@@ -34,11 +35,28 @@ const samplePeople: Person[] = [
 
 export default function Home() {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handlePersonClick = (person: Person) => {
     setSelectedPerson(person);
     console.log("Selected person:", person);
   };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  // Filter people based on search query (case-insensitive)
+  const filteredPeople = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return samplePeople;
+    }
+    
+    const query = searchQuery.toLowerCase();
+    return samplePeople.filter((person) =>
+      person.name.toLowerCase().includes(query)
+    );
+  }, [searchQuery]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -52,10 +70,23 @@ export default function Home() {
             People List
           </h2>
           
+          {/* Search Bar */}
+          <div className="mb-6">
+            <SearchBar onSearchChange={handleSearchChange} />
+          </div>
+          
+          {/* Filtered People List */}
           <PersonList 
-            people={samplePeople} 
+            people={filteredPeople} 
             onPersonClick={handlePersonClick}
           />
+          
+          {/* Show message if no results */}
+          {filteredPeople.length === 0 && searchQuery && (
+            <div className="text-center py-8 text-gray-500">
+              No results found for &ldquo;{searchQuery}&rdquo;
+            </div>
+          )}
           
           {selectedPerson && (
             <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
