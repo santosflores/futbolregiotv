@@ -5,6 +5,8 @@ import PersonList from "./components/PersonList";
 import SearchBar from "./components/SearchBar";
 import SortControls from "./components/SortControls";
 import PersonDetailModal from "./components/PersonDetailModal";
+import LoadingState from "./components/LoadingState";
+import EmptyState from "./components/EmptyState";
 import { sortPeople } from "@/lib/utils/sorting";
 import type { Person, SortOption, SortDirection } from "@/types";
 
@@ -42,6 +44,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("entry_number");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlePersonClick = (person: Person) => {
     setSelectedPerson(person);
@@ -52,6 +55,14 @@ export default function Home() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedPerson(null);
+  };
+
+  // Simulate loading state for testing
+  const simulateLoading = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleSearchChange = (query: string) => {
@@ -87,9 +98,17 @@ export default function Home() {
         </h1>
         
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
-            People List
-          </h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold text-gray-800">
+              People List
+            </h2>
+            <button
+              onClick={simulateLoading}
+              className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Test Loading
+            </button>
+          </div>
           
           {/* Search Bar */}
           <div className="mb-6">
@@ -105,17 +124,19 @@ export default function Home() {
             />
           </div>
           
-          {/* Filtered and Sorted People List */}
-          <PersonList 
-            people={filteredAndSortedPeople} 
-            onPersonClick={handlePersonClick}
-          />
-          
-          {/* Show message if no results */}
-          {filteredAndSortedPeople.length === 0 && searchQuery && (
-            <div className="text-center py-8 text-gray-500">
-              No results found for &ldquo;{searchQuery}&rdquo;
-            </div>
+          {/* Content based on state */}
+          {isLoading ? (
+            <LoadingState />
+          ) : filteredAndSortedPeople.length === 0 ? (
+            <EmptyState 
+              type={searchQuery ? "no-results" : "no-people"}
+              searchQuery={searchQuery}
+            />
+          ) : (
+            <PersonList 
+              people={filteredAndSortedPeople} 
+              onPersonClick={handlePersonClick}
+            />
           )}
           
         </div>

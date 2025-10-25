@@ -118,15 +118,15 @@
   - [x] 9.8 Style modal with clean, minimal design
   - [x] 9.9 Add proper ARIA attributes for accessibility
 
-- [ ] 10.0 Loading and Empty States
+- [x] 10.0 Loading and Empty States
 
-  - [ ] 10.1 Create `app/components/LoadingState.tsx` component
-  - [ ] 10.2 Implement loading spinner or skeleton loader
-  - [ ] 10.3 Add loading text "Loading people..."
-  - [ ] 10.4 Create `app/components/EmptyState.tsx` component
-  - [ ] 10.5 Implement "No people found" message for empty list
-  - [ ] 10.6 Add "No results found" message for search with no matches
-  - [ ] 10.7 Style both components with minimal design
+  - [x] 10.1 Create `app/components/LoadingState.tsx` component
+  - [x] 10.2 Implement loading spinner or skeleton loader
+  - [x] 10.3 Add loading text "Loading people..."
+  - [x] 10.4 Create `app/components/EmptyState.tsx` component
+  - [x] 10.5 Implement "No people found" message for empty list
+  - [x] 10.6 Add "No results found" message for search with no matches
+  - [x] 10.7 Style both components with minimal design
 
 - [ ] 11.0 Main Page Integration
 
