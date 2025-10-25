@@ -6,11 +6,11 @@ interface EmptyStateProps {
 export default function EmptyState({ type, searchQuery }: EmptyStateProps) {
   if (type === "no-people") {
     return (
-      <div className="flex flex-col items-center justify-center py-12">
+      <div className="flex flex-col items-center justify-center py-8 sm:py-12">
         {/* Empty State Icon */}
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
           <svg
-            className="w-8 h-8 text-gray-400"
+            className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -25,10 +25,10 @@ export default function EmptyState({ type, searchQuery }: EmptyStateProps) {
         </div>
         
         {/* Empty State Message */}
-        <h3 className="text-lg font-medium text-gray-900 mb-2">
+        <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2 text-center">
           No people found
         </h3>
-        <p className="text-gray-500 text-center max-w-sm">
+        <p className="text-gray-500 text-center max-w-sm px-4">
           There are no people in the list yet. Check back later or add some people to get started.
         </p>
       </div>
@@ -37,11 +37,11 @@ export default function EmptyState({ type, searchQuery }: EmptyStateProps) {
 
   if (type === "no-results" && searchQuery) {
     return (
-      <div className="flex flex-col items-center justify-center py-12">
+      <div className="flex flex-col items-center justify-center py-8 sm:py-12">
         {/* No Results Icon */}
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
           <svg
-            className="w-8 h-8 text-gray-400"
+            className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -56,10 +56,10 @@ export default function EmptyState({ type, searchQuery }: EmptyStateProps) {
         </div>
         
         {/* No Results Message */}
-        <h3 className="text-lg font-medium text-gray-900 mb-2">
+        <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2 text-center">
           No results found
         </h3>
-        <p className="text-gray-500 text-center max-w-sm">
+        <p className="text-gray-500 text-center max-w-sm px-4">
           No people found for &ldquo;{searchQuery}&rdquo;. Try adjusting your search terms.
         </p>
       </div>

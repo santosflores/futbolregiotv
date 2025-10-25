@@ -50,7 +50,7 @@ export default function PersonDetailModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
@@ -63,18 +63,18 @@ export default function PersonDetailModal({
       />
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-all">
+      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto transform transition-all">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-gray-200">
           <h2
             id="modal-title"
-            className="text-xl font-semibold text-gray-900"
+            className="text-lg sm:text-xl font-semibold text-gray-900"
           >
             Person Details
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+            className="text-gray-400 hover:text-gray-600 focus:outline-none focus:text-gray-600 p-1 touch-manipulation"
             aria-label="Close modal"
           >
             <svg
@@ -94,8 +94,8 @@ export default function PersonDetailModal({
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <div className="space-y-4">
+        <div className="p-4 sm:p-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Entry Number */}
             <div>
               <label className="block text-sm font-medium text-gray-700">
@@ -169,10 +169,10 @@ export default function PersonDetailModal({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end p-6 border-t border-gray-200">
+        <div className="flex justify-end p-4 sm:p-6 border-t border-gray-200">
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+            className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors min-h-[44px] touch-manipulation"
           >
             Close
           </button>
