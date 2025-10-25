@@ -47,17 +47,17 @@
   - [x] 2.3 Create `types/api.ts` with API response types (`PeopleResponse`, `PersonResponse`)
   - [x] 2.4 Export all types from `types/index.ts` for easy importing
 
-- [ ] 3.0 Backend API Development
+- [x] 3.0 Backend API Development
 
-  - [ ] 3.1 Create `app/api/people/route.ts` with GET handler to fetch all people
-  - [ ] 3.2 Implement database query in API route to select all people ordered by entry_number
-  - [ ] 3.3 Add error handling with try-catch for database errors
-  - [ ] 3.4 Return JSON response with `data` array and `count` field
-  - [ ] 3.5 Create `app/api/people/[id]/route.ts` with dynamic route handler
-  - [ ] 3.6 Implement GET handler to fetch single person by ID
-  - [ ] 3.7 Add 404 handling for person not found
-  - [ ] 3.8 Add input validation for ID parameter
-  - [ ] 3.9 Test both API endpoints with sample requests and verify responses
+  - [x] 3.1 Create `app/api/people/route.ts` with GET handler to fetch all people
+  - [x] 3.2 Implement database query in API route to select all people ordered by entry_number
+  - [x] 3.3 Add error handling with try-catch for database errors
+  - [x] 3.4 Return JSON response with `data` array and `count` field
+  - [x] 3.5 Create `app/api/people/[id]/route.ts` with dynamic route handler
+  - [x] 3.6 Implement GET handler to fetch single person by ID
+  - [x] 3.7 Add 404 handling for person not found
+  - [x] 3.8 Add input validation for ID parameter
+  - [x] 3.9 Test both API endpoints with sample requests and verify responses
 
 - [ ] 4.0 Data Access Layer Functions
 
