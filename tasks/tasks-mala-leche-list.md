@@ -59,24 +59,24 @@
   - [x] 3.8 Add input validation for ID parameter
   - [x] 3.9 Test both API endpoints with sample requests and verify responses
 
-- [ ] 4.0 Data Access Layer Functions
+- [x] 4.0 Data Access Layer Functions
 
-  - [ ] 4.1 Create `getAllPeople()` function in `lib/db.ts` to fetch all people from database
-  - [ ] 4.2 Create `getPersonById(id: number)` function to fetch single person by ID
-  - [ ] 4.3 Implement proper TypeScript types for database query results
-  - [ ] 4.4 Add error handling for database connection failures
-  - [ ] 4.5 Add connection pool error handling and retry logic
-  - [ ] 4.6 Write unit tests for database query functions
+  - [x] 4.1 Create `getAllPeople()` function in `lib/db.ts` to fetch all people from database
+  - [x] 4.2 Create `getPersonById(id: number)` function to fetch single person by ID
+  - [x] 4.3 Implement proper TypeScript types for database query results
+  - [x] 4.4 Add error handling for database connection failures
+  - [x] 4.5 Add connection pool error handling and retry logic
+  - [x] 4.6 Write unit tests for database query functions
 
-- [ ] 5.0 Core UI Components - Person List
+- [x] 5.0 Core UI Components - Person List
 
-  - [ ] 5.1 Create `app/components/PersonList.tsx` as client component ("use client")
-  - [ ] 5.2 Implement prop interface accepting `people` array and callback for person click
-  - [ ] 5.3 Render list of people with format: `[entry_number]. [name]`
-  - [ ] 5.4 Add click handler to each list item to open detail modal
-  - [ ] 5.5 Implement hover states with Tailwind classes for visual feedback
-  - [ ] 5.6 Add proper ARIA labels and semantic HTML (ul/li elements)
-  - [ ] 5.7 Test component renders correctly with sample data
+  - [x] 5.1 Create `app/components/PersonList.tsx` as client component ("use client")
+  - [x] 5.2 Implement prop interface accepting `people` array and callback for person click
+  - [x] 5.3 Render list of people with format: `[entry_number]. [name]`
+  - [x] 5.4 Add click handler to each list item to open detail modal
+  - [x] 5.5 Implement hover states with Tailwind classes for visual feedback
+  - [x] 5.6 Add proper ARIA labels and semantic HTML (ul/li elements)
+  - [x] 5.7 Test component renders correctly with sample data
 
 - [ ] 6.0 Search Functionality
 

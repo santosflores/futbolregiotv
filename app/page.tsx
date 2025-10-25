@@ -1,50 +1,72 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
+import PersonList from "./components/PersonList";
+import type { Person } from "@/types";
+
+// Sample data for testing
+const samplePeople: Person[] = [
+  {
+    id: 1,
+    entry_number: 1,
+    name: "Santos Flores",
+    created_at: "2025-10-25T18:34:57.779Z",
+    twitter_handle: null,
+    instagram_handle: null,
+  },
+  {
+    id: 2,
+    entry_number: 2,
+    name: "Juan Perez",
+    created_at: "2025-10-25T18:34:57.787Z",
+    twitter_handle: "@juanp",
+    instagram_handle: null,
+  },
+  {
+    id: 3,
+    entry_number: 3,
+    name: "John Doe",
+    created_at: "2025-10-25T18:34:57.788Z",
+    twitter_handle: null,
+    instagram_handle: "@johndoe",
+  },
+];
 
 export default function Home() {
+  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+
+  const handlePersonClick = (person: Person) => {
+    setSelectedPerson(person);
+    console.log("Selected person:", person);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="/about"
-          >
-            About
-          </a>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">
+          La Lista Mala Leche
+        </h1>
+        
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            People List
+          </h2>
+          
+          <PersonList 
+            people={samplePeople} 
+            onPersonClick={handlePersonClick}
+          />
+          
+          {selectedPerson && (
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h3 className="font-semibold text-blue-900">Selected Person:</h3>
+              <p className="text-blue-800">
+                {selectedPerson.entry_number}. {selectedPerson.name}
+              </p>
+            </div>
+          )}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { query } from "@/lib/db";
+import { getPersonById } from "@/lib/db";
 import type { PersonResponse } from "@/types/api";
-import type { Person } from "@/types/person";
 
 export async function GET(
   request: NextRequest,
@@ -22,13 +21,10 @@ export async function GET(
       );
     }
 
-    // Fetch single person by ID
-    const result = await query<Person>(
-      "SELECT id, entry_number, name, created_at, twitter_handle, instagram_handle FROM people WHERE id = $1",
-      [personId]
-    );
+    // Fetch single person by ID using data access layer function
+    const person = await getPersonById(personId);
 
-    if (result.rows.length === 0) {
+    if (!person) {
       return NextResponse.json(
         { 
           data: null, 
@@ -39,7 +35,7 @@ export async function GET(
     }
 
     const response: PersonResponse = {
-      data: result.rows[0],
+      data: person,
     };
 
     return NextResponse.json(response);
