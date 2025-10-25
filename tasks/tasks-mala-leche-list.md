@@ -30,7 +30,7 @@
 
 ## Tasks
 
-- [ ] 1.0 Database Setup and Configuration
+- [x] 1.0 Database Setup and Configuration
 
   - [x] 1.1 Install PostgreSQL client library (`pg`) and type definitions (`@types/pg`)
   - [x] 1.2 Create `.env.local` file with `DATABASE_URL` environment variable
@@ -38,7 +38,7 @@
   - [x] 1.4 Add database indexes for `entry_number`, `name`, `created_at`, and expression index on `LOWER(name)`
   - [x] 1.5 Create database connection pool utility in `lib/db.ts` using `pg.Pool`
   - [x] 1.6 Add database seed script to insert initial sample data (Santos Flores, Juan Perez, John Doe)
-  - [ ] 1.7 Test database connection and verify schema creation works correctly
+  - [x] 1.7 Test database connection and verify schema creation works correctly
 
 - [ ] 2.0 Type Definitions and Data Models
 
