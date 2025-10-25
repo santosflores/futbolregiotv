@@ -40,12 +40,12 @@
   - [x] 1.6 Add database seed script to insert initial sample data (Santos Flores, Juan Perez, John Doe)
   - [x] 1.7 Test database connection and verify schema creation works correctly
 
-- [ ] 2.0 Type Definitions and Data Models
+- [x] 2.0 Type Definitions and Data Models
 
-  - [ ] 2.1 Create `types/person.ts` with `Person` interface matching database schema
-  - [ ] 2.2 Add `sortOption` and `sortDirection` types for sorting functionality
-  - [ ] 2.3 Create `types/api.ts` with API response types (`PeopleResponse`, `PersonResponse`)
-  - [ ] 2.4 Export all types from `types/index.ts` for easy importing
+  - [x] 2.1 Create `types/person.ts` with `Person` interface matching database schema
+  - [x] 2.2 Add `sortOption` and `sortDirection` types for sorting functionality
+  - [x] 2.3 Create `types/api.ts` with API response types (`PeopleResponse`, `PersonResponse`)
+  - [x] 2.4 Export all types from `types/index.ts` for easy importing
 
 - [ ] 3.0 Backend API Development
 
