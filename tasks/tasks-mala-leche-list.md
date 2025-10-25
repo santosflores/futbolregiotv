@@ -106,17 +106,17 @@
   - [x] 8.5 Add secondary sort by `created_at` when names are identical
   - [x] 8.6 Test all sorting functions with sample data
 
-- [ ] 9.0 Person Detail Modal
+- [x] 9.0 Person Detail Modal
 
-  - [ ] 9.1 Create `app/components/PersonDetailModal.tsx` as client component
-  - [ ] 9.2 Implement modal overlay with backdrop click to close
-  - [ ] 9.3 Display person name, entry number, created_at date formatted
-  - [ ] 9.4 Display social media handles if available (or "No social media provided")
-  - [ ] 9.5 Add close button (X icon) to dismiss modal
-  - [ ] 9.6 Implement keyboard support (Escape key to close)
-  - [ ] 9.7 Add smooth open/close animations using CSS transitions
-  - [ ] 9.8 Style modal with clean, minimal design
-  - [ ] 9.9 Add proper ARIA attributes for accessibility
+  - [x] 9.1 Create `app/components/PersonDetailModal.tsx` as client component
+  - [x] 9.2 Implement modal overlay with backdrop click to close
+  - [x] 9.3 Display person name, entry number, created_at date formatted
+  - [x] 9.4 Display social media handles if available (or "No social media provided")
+  - [x] 9.5 Add close button (X icon) to dismiss modal
+  - [x] 9.6 Implement keyboard support (Escape key to close)
+  - [x] 9.7 Add smooth open/close animations using CSS transitions
+  - [x] 9.8 Style modal with clean, minimal design
+  - [x] 9.9 Add proper ARIA attributes for accessibility
 
 - [ ] 10.0 Loading and Empty States
 

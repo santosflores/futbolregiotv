@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import PersonList from "./components/PersonList";
 import SearchBar from "./components/SearchBar";
 import SortControls from "./components/SortControls";
+import PersonDetailModal from "./components/PersonDetailModal";
 import { sortPeople } from "@/lib/utils/sorting";
 import type { Person, SortOption, SortDirection } from "@/types";
 
@@ -37,13 +38,20 @@ const samplePeople: Person[] = [
 
 export default function Home() {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("entry_number");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
 
   const handlePersonClick = (person: Person) => {
     setSelectedPerson(person);
+    setIsModalOpen(true);
     console.log("Selected person:", person);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPerson(null);
   };
 
   const handleSearchChange = (query: string) => {
@@ -110,16 +118,15 @@ export default function Home() {
             </div>
           )}
           
-          {selectedPerson && (
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <h3 className="font-semibold text-blue-900">Selected Person:</h3>
-              <p className="text-blue-800">
-                {selectedPerson.entry_number}. {selectedPerson.name}
-              </p>
-            </div>
-          )}
         </div>
       </div>
+
+      {/* Person Detail Modal */}
+      <PersonDetailModal
+        person={selectedPerson}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 }
