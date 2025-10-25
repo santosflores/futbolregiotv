@@ -1,0 +1,17 @@
+---
+globs: app/**
+---
+
+# Next.js App Router conventions
+
+- **Server Components by default**: Files in `app/` are Server Components unless marked with `"use client"`.
+- **Layouts**: Define global HTML/body and fonts in [app/layout.tsx](mdc:app/layout.tsx). Child routes inherit.
+- **Pages**: `page.tsx` files map to routes (e.g., [app/page.tsx](mdc:app/page.tsx) → `/`).
+- **Metadata**: Export `metadata` from `layout.tsx` or route segments to control SEO.
+- **Images/Links**: Use `next/image` and `next/link` (see [app/page.tsx](mdc:app/page.tsx)).
+- **Styles**: Import global CSS from [app/globals.css](mdc:app/globals.css). Component-scoped styles can use CSS Modules.
+
+Implementation tips:
+
+- Co-locate UI components within their route folder when specific to that route.
+- Use Suspense/streaming where appropriate; Server Components support async data fetching.

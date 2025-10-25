@@ -1,0 +1,11 @@
+---
+globs: *.css,*.tsx
+---
+
+# Tailwind v4 and theming
+
+- Tailwind is imported via [app/globals.css](mdc:app/globals.css) using `@import "tailwindcss"`.
+- Theme tokens are defined with `@theme inline` and CSS variables (see [app/globals.css](mdc:app/globals.css)).
+- Prefer utility classes in `className`; avoid ad-hoc inline styles where utilities exist.
+- Dark mode is driven via media query variables; respect `--background`/`--foreground`.
+- No separate `tailwind.config.js` is required for basic usage in v4.

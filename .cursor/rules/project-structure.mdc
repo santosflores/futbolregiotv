@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+
+# Project structure and entry points
+
+This project uses Next.js 16 App Router with TypeScript and Tailwind v4.
+
+- **App shell**: [app/layout.tsx](mdc:app/layout.tsx) provides the root HTML and global fonts.
+- **Home route**: [app/page.tsx](mdc:app/page.tsx) is the `/` page.
+- **Global styles**: [app/globals.css](mdc:app/globals.css) imports Tailwind v4 and defines theme tokens.
+- **Assets**: Static files live in [public/](mdc:public). Reference with `/asset.ext` paths.
+- **Next config**: [next.config.ts](mdc:next.config.ts) for framework options.
+- **TypeScript config**: [tsconfig.json](mdc:tsconfig.json) defines strict mode and the `@/*` path alias.
+- **ESLint config**: [eslint.config.mjs](mdc:eslint.config.mjs) extends `eslint-config-next`.
+- **Package scripts**: [package.json](mdc:package.json) exposes `dev`, `build`, `start`, and `lint`.
+
+Conventions:
+
+- Routes, layouts, and components live under `app/` using file-based routing.
+- Prefer `next/image` and `next/link` utilities in UI code (see [app/page.tsx](mdc:app/page.tsx)).
+- Use the `@/*` alias for absolute imports rooted at the repo root.

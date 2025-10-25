@@ -1,0 +1,11 @@
+---
+globs: *.ts,*.tsx,*.mjs
+---
+
+# Linting and code quality
+
+- ESLint extends Next.js presets: see [eslint.config.mjs](mdc:eslint.config.mjs).
+- Ignored build outputs: `.next/**`, `out/**`, `build/**`, and `next-env.d.ts` via `globalIgnores`.
+- Use `npm run lint` (defined in [package.json](mdc:package.json)) before commits.
+- Prefer accessible, semantic HTML; Core Web Vitals rules are enabled.
+- Keep components small, typed, and free of unused props/vars.

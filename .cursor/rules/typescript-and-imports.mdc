@@ -1,0 +1,20 @@
+---
+globs: *.ts,*.tsx
+---
+
+# TypeScript and import rules
+
+- **Strict mode**: Enabled in [tsconfig.json](mdc:tsconfig.json). Avoid `any`; prefer precise types.
+- **Module resolution**: `moduleResolution` is `bundler`; rely on ESM imports.
+- **JSX**: `jsx` is `react-jsx` targeting React 19.
+- **Paths**: Use the alias `@/*` (see [tsconfig.json](mdc:tsconfig.json)) instead of deep relative paths. Example:
+
+```ts
+// Prefer
+import Button from "@/app/components/Button";
+
+// Avoid
+import Button from "../../app/components/Button";
+```
+
+- **No emits**: `noEmit` is true; builds rely on Next.js compiler.
