@@ -3,7 +3,9 @@
 import { useState, useMemo } from "react";
 import PersonList from "./components/PersonList";
 import SearchBar from "./components/SearchBar";
-import type { Person } from "@/types";
+import SortControls from "./components/SortControls";
+import { sortPeople } from "@/lib/utils/sorting";
+import type { Person, SortOption, SortDirection } from "@/types";
 
 // Sample data for testing
 const samplePeople: Person[] = [
@@ -36,6 +38,8 @@ const samplePeople: Person[] = [
 export default function Home() {
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState<SortOption>("entry_number");
+  const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
 
   const handlePersonClick = (person: Person) => {
     setSelectedPerson(person);
@@ -46,17 +50,26 @@ export default function Home() {
     setSearchQuery(query);
   };
 
-  // Filter people based on search query (case-insensitive)
-  const filteredPeople = useMemo(() => {
-    if (!searchQuery.trim()) {
-      return samplePeople;
+  const handleSortChange = (sort: SortOption, direction: SortDirection) => {
+    setSortOption(sort);
+    setSortDirection(direction);
+  };
+
+  // Filter and sort people based on search query and sort options
+  const filteredAndSortedPeople = useMemo(() => {
+    let filtered = samplePeople;
+    
+    // Apply search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = samplePeople.filter((person) =>
+        person.name.toLowerCase().includes(query)
+      );
     }
     
-    const query = searchQuery.toLowerCase();
-    return samplePeople.filter((person) =>
-      person.name.toLowerCase().includes(query)
-    );
-  }, [searchQuery]);
+    // Apply sorting
+    return sortPeople(filtered, sortOption, sortDirection);
+  }, [searchQuery, sortOption, sortDirection]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -75,14 +88,23 @@ export default function Home() {
             <SearchBar onSearchChange={handleSearchChange} />
           </div>
           
-          {/* Filtered People List */}
+          {/* Sort Controls */}
+          <div className="mb-6">
+            <SortControls
+              currentSort={sortOption}
+              currentDirection={sortDirection}
+              onSortChange={handleSortChange}
+            />
+          </div>
+          
+          {/* Filtered and Sorted People List */}
           <PersonList 
-            people={filteredPeople} 
+            people={filteredAndSortedPeople} 
             onPersonClick={handlePersonClick}
           />
           
           {/* Show message if no results */}
-          {filteredPeople.length === 0 && searchQuery && (
+          {filteredAndSortedPeople.length === 0 && searchQuery && (
             <div className="text-center py-8 text-gray-500">
               No results found for &ldquo;{searchQuery}&rdquo;
             </div>

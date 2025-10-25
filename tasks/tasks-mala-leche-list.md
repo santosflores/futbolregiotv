@@ -88,23 +88,23 @@
   - [x] 6.6 Style search input with minimal, clean design using Tailwind
   - [x] 6.7 Add clear button (X icon) to reset search query
 
-- [ ] 7.0 Sort Controls
+- [x] 7.0 Sort Controls
 
-  - [ ] 7.1 Create `app/components/SortControls.tsx` as client component
-  - [ ] 7.2 Add sort option buttons (Entry Number, Name, Date Added)
-  - [ ] 7.3 Implement ascending/descending toggle for each sort option
-  - [ ] 7.4 Pass sort state to parent component via callback
-  - [ ] 7.5 Add visual indicator for active sort option and direction
-  - [ ] 7.6 Style buttons with active/hover states using Tailwind
+  - [x] 7.1 Create `app/components/SortControls.tsx` as client component
+  - [x] 7.2 Add sort option buttons (Entry Number, Name, Date Added)
+  - [x] 7.3 Implement ascending/descending toggle for each sort option
+  - [x] 7.4 Pass sort state to parent component via callback
+  - [x] 7.5 Add visual indicator for active sort option and direction
+  - [x] 7.6 Style buttons with active/hover states using Tailwind
 
-- [ ] 8.0 Sorting Logic Implementation
+- [x] 8.0 Sorting Logic Implementation
 
-  - [ ] 8.1 Create `lib/utils/sorting.ts` with sorting utility functions
-  - [ ] 8.2 Implement `sortByEntryNumber(people, direction)` function
-  - [ ] 8.3 Implement `sortByName(people, direction)` function
-  - [ ] 8.4 Implement `sortByDate(people, direction)` function
-  - [ ] 8.5 Add secondary sort by `created_at` when names are identical
-  - [ ] 8.6 Test all sorting functions with sample data
+  - [x] 8.1 Create `lib/utils/sorting.ts` with sorting utility functions
+  - [x] 8.2 Implement `sortByEntryNumber(people, direction)` function
+  - [x] 8.3 Implement `sortByName(people, direction)` function
+  - [x] 8.4 Implement `sortByDate(people, direction)` function
+  - [x] 8.5 Add secondary sort by `created_at` when names are identical
+  - [x] 8.6 Test all sorting functions with sample data
 
 - [ ] 9.0 Person Detail Modal
 
