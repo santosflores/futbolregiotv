@@ -128,19 +128,19 @@
   - [x] 10.6 Add "No results found" message for search with no matches
   - [x] 10.7 Style both components with minimal design
 
-- [ ] 11.0 Main Page Integration
+- [x] 11.0 Main Page Integration
 
-  - [ ] 11.1 Update `app/page.tsx` to fetch data from `/api/people` endpoint
-  - [ ] 11.2 Implement useState hooks for people data, search query, sort state
-  - [ ] 11.3 Implement useEffect to fetch data on component mount
-  - [ ] 11.4 Add loading state display while fetching data
-  - [ ] 11.5 Implement filterPeople function to filter by search query (case-insensitive)
-  - [ ] 11.6 Integrate sorting logic based on current sort state
-  - [ ] 11.7 Wire up PersonList component with filtered/sorted data
-  - [ ] 11.8 Wire up SearchBar and SortControls with callbacks
-  - [ ] 11.9 Implement PersonDetailModal with selected person state
-  - [ ] 11.10 Add error handling for API failures with error message display
-  - [ ] 11.11 Test all interactive features (search, sort, modal) end-to-end
+  - [x] 11.1 Update `app/page.tsx` to fetch data from `/api/people` endpoint
+  - [x] 11.2 Implement useState hooks for people data, search query, sort state
+  - [x] 11.3 Implement useEffect to fetch data on component mount
+  - [x] 11.4 Add loading state display while fetching data
+  - [x] 11.5 Implement filterPeople function to filter by search query (case-insensitive)
+  - [x] 11.6 Integrate sorting logic based on current sort state
+  - [x] 11.7 Wire up PersonList component with filtered/sorted data
+  - [x] 11.8 Wire up SearchBar and SortControls with callbacks
+  - [x] 11.9 Implement PersonDetailModal with selected person state
+  - [x] 11.10 Add error handling for API failures with error message display
+  - [x] 11.11 Test all interactive features (search, sort, modal) end-to-end
 
 - [ ] 12.0 Responsive Design and Styling
 

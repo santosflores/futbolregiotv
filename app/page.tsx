@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import PersonList from "./components/PersonList";
 import SearchBar from "./components/SearchBar";
 import SortControls from "./components/SortControls";
@@ -8,43 +8,51 @@ import PersonDetailModal from "./components/PersonDetailModal";
 import LoadingState from "./components/LoadingState";
 import EmptyState from "./components/EmptyState";
 import { sortPeople } from "@/lib/utils/sorting";
-import type { Person, SortOption, SortDirection } from "@/types";
+import type { Person, SortOption, SortDirection, PeopleResponse } from "@/types";
 
-// Sample data for testing
-const samplePeople: Person[] = [
-  {
-    id: 1,
-    entry_number: 1,
-    name: "Santos Flores",
-    created_at: "2025-10-25T18:34:57.779Z",
-    twitter_handle: null,
-    instagram_handle: null,
-  },
-  {
-    id: 2,
-    entry_number: 2,
-    name: "Juan Perez",
-    created_at: "2025-10-25T18:34:57.787Z",
-    twitter_handle: "@juanp",
-    instagram_handle: null,
-  },
-  {
-    id: 3,
-    entry_number: 3,
-    name: "John Doe",
-    created_at: "2025-10-25T18:34:57.788Z",
-    twitter_handle: null,
-    instagram_handle: "@johndoe",
-  },
-];
+// API functions
+const fetchPeople = async (): Promise<Person[]> => {
+  try {
+    const response = await fetch("/api/people");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data: PeopleResponse = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching people:", error);
+    throw error;
+  }
+};
 
 export default function Home() {
+  const [people, setPeople] = useState<Person[]>([]);
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<SortOption>("entry_number");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch people data on component mount
+  useEffect(() => {
+    const loadPeople = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        const peopleData = await fetchPeople();
+        setPeople(peopleData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load people");
+        console.error("Error loading people:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadPeople();
+  }, []);
 
   const handlePersonClick = (person: Person) => {
     setSelectedPerson(person);
@@ -57,13 +65,6 @@ export default function Home() {
     setSelectedPerson(null);
   };
 
-  // Simulate loading state for testing
-  const simulateLoading = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -76,19 +77,19 @@ export default function Home() {
 
   // Filter and sort people based on search query and sort options
   const filteredAndSortedPeople = useMemo(() => {
-    let filtered = samplePeople;
+    let filtered = people;
     
     // Apply search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
-      filtered = samplePeople.filter((person) =>
+      filtered = people.filter((person) =>
         person.name.toLowerCase().includes(query)
       );
     }
     
     // Apply sorting
     return sortPeople(filtered, sortOption, sortDirection);
-  }, [searchQuery, sortOption, sortDirection]);
+  }, [people, searchQuery, sortOption, sortDirection]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -98,17 +99,24 @@ export default function Home() {
         </h1>
         
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold text-gray-800">
-              People List
-            </h2>
-            <button
-              onClick={simulateLoading}
-              className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              Test Loading
-            </button>
-          </div>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            People List
+          </h2>
+          
+          {/* Error Message */}
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <div className="flex items-center">
+                <svg className="w-5 h-5 text-red-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+                <div>
+                  <h3 className="text-sm font-medium text-red-800">Error loading people</h3>
+                  <p className="text-sm text-red-700 mt-1">{error}</p>
+                </div>
+              </div>
+            </div>
+          )}
           
           {/* Search Bar */}
           <div className="mb-6">
